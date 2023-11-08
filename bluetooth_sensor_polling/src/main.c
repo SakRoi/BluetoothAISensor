@@ -71,14 +71,16 @@ void send_data_thread(void)
 	while(1){
 		struct Measurement m = readADCValue();
 		/* Send notification, the function sends notifications only if a client is subscribed */
+		my_lbs_send_sensor_notify(666);
+		k_sleep(K_MSEC(NOTIFY_INTERVAL)); //Start number
 		my_lbs_send_sensor_notify(m.x);
-		printk("x = %d", &m.x);
+		printk("x = %d", m.x);
 		k_sleep(K_MSEC(NOTIFY_INTERVAL));
 		my_lbs_send_sensor_notify(m.y);
-		printk("y = %d", &m.y);
+		printk("y = %d", m.y);
 		k_sleep(K_MSEC(NOTIFY_INTERVAL));
 		my_lbs_send_sensor_notify(m.z);
-		printk("z = %d", &m.z);
+		printk("z = %d", m.z);
 		k_sleep(K_MSEC(NOTIFY_INTERVAL));
 		my_lbs_send_sensor_notify(device_direction);
 		k_sleep(K_MSEC(NOTIFY_INTERVAL));
@@ -145,8 +147,11 @@ void main(void)
 {
 	int blink_status = 0;
 	int err;
-
-	LOG_INF("Starting Lesson 4 - Exercise 2 \n");
+	err = initializeADC();
+	if (err) {
+		LOG_ERR("ADC init failed (err %d)\n", err);
+		return;
+	}
 
 	err = dk_leds_init();
 	if (err) {
