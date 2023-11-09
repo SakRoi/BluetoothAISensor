@@ -1,5 +1,0 @@
-{
-    "nrf-connect.applications": [
-        "${workspaceFolder}\\bluetooth_sensor_polling"
-    ]
-}
