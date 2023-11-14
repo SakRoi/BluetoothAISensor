@@ -8,8 +8,6 @@
 
 # Installation
 
-  
-
 ## Nrf5340
 
 ## Rasberry Pi
