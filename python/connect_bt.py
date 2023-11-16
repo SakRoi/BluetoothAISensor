@@ -40,10 +40,6 @@ async def main(address):
 
         await client.start_notify(characteristicList[-1], notify_handler)
         await asyncio.sleep(5000)
-        
-
-
-        #model_number = await client.read_gatt_char(MODEL_NBR_UUID)
-        #print("Model Number: {0}".format("".join(map(chr, model_number))))
+        await client.stop_notify(characteristicList[-1])
 
 asyncio.run(main(address))
