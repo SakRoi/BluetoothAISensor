@@ -1,9 +1,12 @@
 import mysql.connector
+from dotenv import load_dotenv
+
+load_dotenv()
 
 mydb = mysql.connector.connect(
-  host="800-callmemaybe",
-  user="dumbass",
-  password="uWishBitch",
+  host="172.20.241.9",
+  user="dbaccess_rw",
+  password="fasdjkf2389vw2c3k234vk2f3",
   database="measurements"
 )
 print(mydb)
@@ -18,3 +21,6 @@ mycursor.executemany(writeInto, values)
 mydb.commit()
 
 print(mycursor.rowcount, "was inserted.")
+
+if 'main':
+  write_data([0, 0, 0, 0])
