@@ -1,5 +1,9 @@
 **/build
 **/.vscode
 **/__pycache__
+<<<<<<< HEAD
 **/*.txt
 **/*.csv
+=======
+**/.env
+>>>>>>> 80e3c82 (juu)
