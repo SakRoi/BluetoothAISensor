@@ -24,4 +24,8 @@ def write_data(data: list) -> None:
 
   mydb.commit()
 
+
   print(mycursor.rowcount, "was inserted.")
+
+if  "__main__":
+  write_data([1000, 1000, 1000, 1000])
