@@ -40,15 +40,9 @@ async def main(address):
         print(characteristicList[-1])
 
         await client.start_notify(characteristicList[-1], notify_handler)
-<<<<<<< HEAD
+
         await asyncio.sleep(260)
-=======
-<<<<<<< HEAD:python/put_data/connect_bt.py
-        await asyncio.sleep(20)
-=======
-        await asyncio.sleep(5000)
->>>>>>> a86f7da (FEAT: add stop_notify function):python/connect_bt.py
->>>>>>> 2dc3efe (FEAT: add stop_notify function)
+
         await client.stop_notify(characteristicList[-1])
 
 asyncio.run(main(address))
