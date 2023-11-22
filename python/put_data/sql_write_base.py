@@ -1,14 +1,20 @@
 import mysql.connector
-
+from dotenv import load_dotenv
+import os
 
 def write_data(data: list) -> None:
+  load_dotenv()
+  envHost = os.getenv("HOST")
+  envUser = os.getenv("SQL_USER")
+  print(envUser)
+  envPassword = os.getenv("SQL_PASSWORD")
+
   mydb = mysql.connector.connect(
-    host="800-callmemaybe",
-    user="Dumbas",
-    password="youWishBish",
+    host = envHost,
+    user = envUser,
+    password = envPassword,
     database="measurements"
   )
-  
   mycursor = mydb.cursor()
 
   writeInto = ("INSERT INTO rawdata (groupid, from_mac, to_mac, sensorvalue_a, sensorvalue_b, sensorvalue_c, sensorvalue_d, sensorvalue_f ) VALUES (%s, %s,%s, %s,%s, %s,%s, %s)")
@@ -17,3 +23,5 @@ def write_data(data: list) -> None:
   mycursor.executemany(writeInto, values)
 
   mydb.commit()
+
+  print(mycursor.rowcount, "was inserted.")
