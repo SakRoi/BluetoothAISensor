@@ -40,11 +40,7 @@ async def main(address):
         print(characteristicList[-1])
 
         await client.start_notify(characteristicList[-1], notify_handler)
-<<<<<<< HEAD
         await asyncio.sleep(20)
-=======
-        await asyncio.sleep(5000)
->>>>>>> a86f7da2974428ad884e8643c4c8040771069351
         await client.stop_notify(characteristicList[-1])
 
 asyncio.run(main(address))
