@@ -45,9 +45,9 @@ print(ReLu)
 model.layers[0].set_weights(ReLu_Weight, ReLu_Bias)
 #model.layers[1].set_weights([Softmax_Weight, Softmax_Bias])
 '''
-x = 1900
-y = 1700
-z = 1700
+x = 1200
+y = 1600
+z = 1600
 
 test_data = np.array([[x, y, z]])
 
@@ -60,7 +60,7 @@ model = keras.Sequential(
 )
 
 model.summary()
-model.load_weights('c:/CodeStuff/Projektikurssi/Product/Neural/.weights.h5', skip_mismatch=False)
+model.load_weights('.weights.h5', skip_mismatch=False)
 
 true_labels = 0
 

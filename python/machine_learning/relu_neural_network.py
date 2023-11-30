@@ -118,4 +118,4 @@ with open("weights.csv", "w", newline='') as data:
             print(i, end = '')
             '''
 
-model.save_weights('c:/CodeStuff/Projektikurssi/Product/Neural/.weights.h5', overwrite=True)
+model.save_weights('.weights.h5', overwrite=True)
