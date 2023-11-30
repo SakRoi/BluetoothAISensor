@@ -33,10 +33,8 @@ async def main(address):
     async with BleakClient(address) as client:
         characteristicList = []
         for service in client.services:
-           for characteristic in service.characteristics:
-              if characteristic.handle == 22:
-                 print(characteristic.handle)
-                 characteristicList.append(characteristic)
+            for characteristic in service.characteristics:
+                characteristicList.append(characteristic)
         print(characteristicList[-1])
 
         await client.start_notify(characteristicList[-1], notify_handler)
