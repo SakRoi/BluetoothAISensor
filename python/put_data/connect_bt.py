@@ -13,7 +13,6 @@ dataList = []
 
 def send_data():
     sql_write_base.write_data(dataList)
-     
 
 def notify_handler(sender: BleakGATTCharacteristic, data: bytearray):
     #print(f"{data}")
@@ -29,7 +28,6 @@ def notify_handler(sender: BleakGATTCharacteristic, data: bytearray):
         dataList.clear()
     else:
         dataList.append(hexInt)
-             
 
 async def main(address):
     async with BleakClient(address) as client:
@@ -40,15 +38,7 @@ async def main(address):
         print(characteristicList[-1])
 
         await client.start_notify(characteristicList[-1], notify_handler)
-<<<<<<< HEAD:python/put_data/connect_bt.py
-<<<<<<< HEAD:python/put_data/connect_bt.py
-        await asyncio.sleep(20)
-=======
-        await asyncio.sleep(5000)
->>>>>>> a86f7da (FEAT: add stop_notify function):python/connect_bt.py
-=======
-        await asyncio.sleep(20)
->>>>>>> d3deb47 (FEAT: add a way to write the database data into a txt, add a way to fetch different groups' data.):python/connect_bt.py
+        await asyncio.sleep(260)
         await client.stop_notify(characteristicList[-1])
 
 asyncio.run(main(address))
