@@ -86,7 +86,6 @@ for idx in succesful_indices:
     print(f"x_test {x_test[idx]}")
     print(f"Predicted: {predicted_labels[idx]}, Actual: {true_labels[idx]}")
 
-'''
 RW = model.layers[0].get_weights()[0]
 RB = model.layers[0].get_weights()[1]
 SW = model.layers[1].get_weights()[0]
@@ -99,23 +98,10 @@ print(f"ReLU bias: {RB}")
 print(f"softmax weights: {SW}")
 print(f"softmax bias: {SB}")
 
-with open("weights.csv", "w", newline='') as data:
-        data.write("ReLu weights")
-        for i in RW:
-            data.write(str(i)+"")
-            print(i, end = '')
-        data.write("ReLu Bias")
-        for i in RB:
-            data.write(str(i)+"")
-            print(i, end = '')
-        data.write("Softmax weights")
-        for i in SW:
-            data.write(str(i)+"")
-            print(i, end = '')
-        data.write("Softmax bias ")
-        for i in SB:
-            data.write(str(i)+"")
-            print(i, end = '')
-            '''
+np.savetxt('RW.csv', RW, delimiter=',')
+np.savetxt('RB.csv', RB, delimiter=',')
+np.savetxt('SW.csv', SW, delimiter=',')
+np.savetxt('SB.csv', SB, delimiter=',')
+
 
 model.save_weights('.weights.h5', overwrite=True)
