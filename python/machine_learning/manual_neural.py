@@ -8,49 +8,80 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
 from tensorflow import keras
 from tensorflow.keras import layers
-'''
-weightfile = open('weights.csv', 'r')
-data = np.array([])
- 
-for i in weightfile:
-    data = np.append(data, i)
+import pandas as pd
 
-ReLu_Bias = data[1:67]
-ReLu_Weight = data[68:196]
-Softmax_Weight = data[197:325]
-Softmax_Bias = data[326:]
+def h_write(RW, RB, SW, SB):
+    with open("ml.h", "w", newline='') as data:
+        j = f"#ifndef HEADER_FILE\n#define HEADER_FILE\nfloat relu_weights[{RW.shape[0]}][{RW.shape[1]}] = {{"
+        data.write(j)
+        for i in RW:
+            data.write("{")
+            for j in i:
+                data.write(f"{j},")
+            data.write("},")
 
-ReLu_Bias2 = np.array([])
+        j = f"}};\nfloat relu_biases[{RB.shape[0]}] = {{"
+        data.write(j)
+        for i in RB:
+            data.write(f"{i},")
 
-for i in ReLu_Bias:
-    ReLu_Bias2 = np.append(ReLu_Bias2, float(ReLu_Bias[i]))
-print(ReLu_Bias2)
+        j = F"}};\nfloat softmax_weights[{SW.shape[0]}][{SW.shape[1]}] = {{"
+        data.write(j)
+        for i in SW:
+            data.write("{")
+            for j in i:
+                data.write(f"{j},")
+            data.write("},")
 
-layer = np.array([]).reshape(3,0)
+        j = f"}};\nfloat softmax_biases[{SB.shape[0]}] = {{"
+        data.write(j)
+        for i in SB:
+            data.write(f"{i},")
 
+        j = "};\n#endif"
+        data.write(j)
 
-print('shapes:',ReLu_Weight.shape,ReLu_Bias.shape,Softmax_Weight.shape, Softmax_Bias.shape )
+        
 
-ReLu = [[ReLu_Weight],[ReLu_Bias]]
-Softmax = [[Softmax_Weight],[Softmax_Bias]]
-#weights = weights.reshape(-1,2)
-'''
+def reLU(Z):
+    print(Z.shape)
+    A = Z
+    for i in range(Z.shape[0]):
+            A[i] = max(Z[i], 0)
+    return A
 
-num_classes = 6
+def softmax(Z):
+    return np.exp(Z) / sum(np.exp(Z))
+
 input_shape = (3)
+num_classes = 6
 
-'''
-#model.layers[0].set_weights(ReLu)    
-print(ReLu)
-model.layers[0].set_weights(ReLu_Weight, ReLu_Bias)
-#model.layers[1].set_weights([Softmax_Weight, Softmax_Bias])
-'''
-x = 1200
+x = 1900
 y = 1600
 z = 1600
 
-test_data = np.array([[x, y, z]])
+RW = np.loadtxt("RW.csv", delimiter=',')
+RB = np.loadtxt("RB.csv", delimiter=',')
+SW = np.loadtxt("SW.csv", delimiter=',')
+SB = np.loadtxt("SB.csv", delimiter=',')
 
+print(RW.shape)
+
+test_data = np.array([x, y, z])
+
+#RW = np.reshape(RW, (3, -1))
+
+Z1 = np.dot(test_data, RW) + RB
+A1 = reLU(Z1)
+print(A1.shape)
+Z2 = np.dot(A1, SW) + SB
+A2 = softmax(Z2)
+
+print(A2)
+
+h_write(RW, RB, SW, SB)
+
+'''
 model = keras.Sequential(
     [
         keras.Input(shape=input_shape),
@@ -64,32 +95,7 @@ model.load_weights('.weights.h5', skip_mismatch=False)
 
 true_labels = 0
 
-'''
 model.compile(loss=keras.losses.BinaryCrossentropy(),
                 optimizer=keras.optimizers.Adam(), # use Adam instead of SGD
                 metrics=['accuracy'])
 '''
- 
-
-
-
-
-
-predictions = model.predict_on_batch(test_data)
-predicted_labels = np.argmax(predictions, axis = 1)
-
-
-failed_indices = np.where(predicted_labels != true_labels)[0]
-
-succesful_indices = np.where(predicted_labels == true_labels)
-
-print(len(failed_indices))
-for idx in failed_indices:
-    print(f"x_test {test_data[idx]}")
-    print(f"Predicted: {predicted_labels[idx]}, Actual: {true_labels}")
-
-print(len(succesful_indices))
-for idx in succesful_indices:
-    print(f"x_test {test_data[idx]}")
-    print(f"Predicted: {predicted_labels[idx]}, Actual: {true_labels}")
-

@@ -2,6 +2,21 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 
+def h_write(centroid):
+    with open("k_means.h", "w", newline='') as data:
+
+        j = f"#ifndef KMEANS_HEADER_FILE\n#define KMEANS_HEADER_FILE\nfloat k_means[{centroid.shape[0]}][{centroid.shape[1]}] = {{"
+        data.write(j)
+        for i in centroid:
+            data.write("{")
+            for j in i:
+                data.write(f"{j},")
+            data.write("},")
+
+
+        j = "};\n#endif"
+        data.write(j)
+
 def is_cluster_empty(clusterArray):
     if clusterArray.size == 0:
         return True
@@ -132,7 +147,4 @@ ax.scatter(centroid[:, 0], centroid[:, 1], centroid[:, 2], s=300.0, c="green")
 
 plt.show()
 
-
-# Laske datalla uudet keskipisteet
-
-#repeat
+h_write(centroid)
