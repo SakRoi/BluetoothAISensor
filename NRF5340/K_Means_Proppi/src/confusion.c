@@ -50,7 +50,7 @@ void printConfusionMatrix(void)
 	printk("   cp1 cp2 cp3 cp4 cp5 cp6\n");
 	for(int i = 0;i<6;i++)
 	{
-		printk("cp%d %d   %d   %d   %d   %d   %d\n",i+1,CM[4][0],CM[i][1],CM[i][2],CM[i][3],CM[i][4],CM[i][5]);
+		printk("cp%d %d   %d   %d   %d   %d   %d\n",i+1,CM[i][0],CM[i][1],CM[i][2],CM[i][3],CM[i][4],CM[i][5]);
 	}
 }
 
@@ -105,8 +105,8 @@ for (int i = 0; i<100; i++){
 
 
 int biggestEle(double x[], int arrayLen){
-int biggest = x[0];
-int biggestIndex = 3;
+double biggest = -1;
+int biggestIndex = -1;
 
 
 for (int i=0; i<arrayLen; i++){
@@ -131,69 +131,76 @@ int calculateDistanceToAllCentrePointsAndSelectWinner(int x,int y,int z)
    laskee etäisyyden kaikkiin 6 K-means keskipisteisiin ja valitsee
    sen keskipisteen, jonka etäisyys mittaustulokseen on lyhyin.
    ***************************************/
-    double A1[128];
-    int input[3] = {x, y, z};
+  double A1[10];
+       // int input[3] = {1948, 1611, 1640};
+        int input[3] = {x, y, z};
 
 
-    for (int i = 0; i < 128; i++){ //dot production of a matrix
-        int col_sum = 0;
-        for (int j = 0; j < 3; j++) {
-            col_sum += input[j] * relu_weights[j][i];
+        for (int i = 0; i < 10; i++){ //dot production of a matrix
+            double col_sum = 0;
+            for (int j = 0; j < 3; j++) {
+                col_sum += input[j] * relu_weights[j][i];
+            }
+            A1[i] = col_sum;
         }
-        A1[i] = col_sum;
-    }
 
-    for (int j = 0; j < 128; j++){ //adding biases to the output
-        A1[j] += relu_biases[j];
-    }
+        for (int j = 0; j < 10; j++){ //adding biases to the output
+            A1[j] += relu_biases[j];
+        }
 
-    for (int i = 0; i < 128; i++){ //ReLU, if A1[i] is bigger than zero, keep it, else make it 0
-        A1[i] = (A1[i] > 0) ? A1[i] : 0; 
-    }
+        for (int i = 0; i < 10; i++){ //ReLU, if A1[i] is bigger than zero, keep it, else make it 0
+            A1[i] = (A1[i] > 0) ? A1[i] : 0;
+        }
 
-
-
-    double A2[6] = {0, 0, 0, 0, 0, 0};
- 
-
+    for (int j = 0; j<10; j++){
+        printk("A1 at this point %f\n",A1[j]);
     
-    for (int i = 0; i < 6; i++){ //dot production of a matrix
-        int col_sum = 0;
-        for (int j = 0; j < 128; j++) {
-            col_sum += A1[j] * softmax_weights[j][i];
+    }
+//while(1){
+//     k_sleep(K_MSEC(10000));
+
+        double A2[6] = {0, 0, 0, 0, 0, 0};
+
+
+
+        for (int i = 0; i < 6; i++){ //dot production of a matrix
+            double col_sum = 0;
+            for (int j = 0; j < 10; j++) {
+                col_sum += A1[j] * softmax_weights[j][i];
+            }
+            A2[i] = col_sum;
         }
-        A2[i] = col_sum;
-    }
 
-    for (int i = 0; i < 6; i++){ //adding biases to the output
-        A2[i] += softmax_biases[i];
-    }
+        for (int i = 0; i < 6; i++){ //adding biases to the output
+            A2[i] += softmax_biases[i];
+        }
 
-    for (int i = 0; i < 6; i++){
-        printk("A2: %f\n", A2[i]);
-    }
+        for (int i = 0; i < 6; i++){
+            printk("A2: %f\n", A2[i]);
+        }
 
-    double output[6];
-    double expSum = 0;
+        double output[6];
+        double expSum = 0;
 
-    for (int i = 0; i < 6; i++){
-        double exponential = exp(A2[i]);
-        output[i] = exponential;
-        expSum += exponential;
-    }
+        for (int i = 0; i < 6; i++){
+            double exponential = exp(A2[i]);
+            output[i] = exponential;
+            printk("Output: %f\n", output[i]);
+            expSum += exponential;
+        }
 
-    for (int i = 0; i < 6; i++){
-        double softMax = output[i];
-        softMax = softMax/expSum;
-        printk("softMax: %f\n", softMax);
-        output[i] = softMax;
-        printk("Output: %f\n", output[i]);
-    }
+        printk("%f", expSum);
 
-
+        for (int i = 0; i < 6; i++){
+            double softMax = output[i]/expSum;
+            printk("Output: %f\n", output[i]);
+            printk("softMax: %f\n", softMax);
+            output[i] = softMax;
+            printk("Output: %f\n", output[i]);
+        }
 
     int minIndex = biggestEle(output, 6);
-   printk("Test printing end index:%d \n", minIndex);
+   printk("Test printing  haah aah haa end index:%d \n", minIndex);
    return minIndex;
 }
 
