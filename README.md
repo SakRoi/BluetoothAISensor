@@ -22,9 +22,11 @@ K-means was built using NumPy and the neural network using TensorFlow.
 After creating both algorithms they were recreated using C language by using the stored weights, biases and k-means centroids. This was done so that they could be used on the nRF without needing to transfer sensor data over bluetooth again. 
 
 
-<div style="width:60px ; height:60px ; center">
-![K_Means_Centers](/pictures/k_means_centers.png "K_Means_Centers")
-</div>
+<p align="center">
+ <img src="https://github.com/SakRoi/BluetoothAISensor/blob/readme/pictures/k_means_centers.png?raw=true" alt="K_Means_Centers"/>
+</p>
+
+
 
 
 <p align="center">
@@ -33,12 +35,17 @@ After creating both algorithms they were recreated using C language by using the
 
 
 
-![Neural_Model](/pictures/neural_model.png "Neural_Model")
+<p align="center">
+ <img src="https://github.com/SakRoi/BluetoothAISensor/blob/readme/pictures/neural_model.png?raw=true" alt="Neural_Model"/>
+</p>
 
 
 
 
-![Confusion_Matrix](/pictures/confusion_matrix.png "Confusion_Matrix")
+<p align="center">
+ <img src="https://github.com/SakRoi/BluetoothAISensor/blob/readme/pictures/confusion_matrix.png?raw=true" alt="Confusion_Matrix"/>
+</p>
+
 
 
 Above is a picture of a confusion matrix created based on live sensor data and a taught neural network. 
