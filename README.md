@@ -21,9 +21,10 @@ K-means was built using NumPy and the neural network using TensorFlow.
 ![K_Means_Centers](/pictures/k_means_centers.png "K_Means_Centers")
 
 [picture of the neural network decription]
+![Neural_Network](/pictures/neural_network_pic.png "Neural_Network")
 
 [model picture of the neural network]
-
+![Neural_Model](/pictures/neural_model.png "Neural_Model")
 
 
 ![Confusion_Matrix](/pictures/confusion_matrix.png "Confusion_Matrix")
