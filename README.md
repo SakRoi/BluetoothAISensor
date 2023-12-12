@@ -8,23 +8,33 @@
 
 ## Description
 
-The project is a collection of code that moves accelerometer data over a bluetooth connection and teaches both a k-means algorithm and a neural network to make predictions on that data. Centroids and weights gained from the teaching process can be used on nRF5340 to make predictions on the device itself.
+The project is a collection of code that moves accelerometer data over a bluetooth connection and teaches both a k-means algorithm and a neural network to make predictions on that data. Centroids and weights gained from the teaching process can be used on nRF5340 to make predictions on the device itself. 
 
-[picture of the architecture]
+
+The sensor data collected by nRF is stored in a MySQL database after it has been moved to the Raspberry Pi. From there the data is fetched to a computer using a python script so that it can be used in the machine learning part of the project.
+
 ![Architecture](/pictures/arkkitehtuuri.png "Project Architecture")
 
-Python was used for both the neural network and the k-means algorithm due to its ease of use. We used a Python library called Bleak for the bluetooth socket program.
 
+Python was used for both the neural network and the k-means algorithm due to its ease of use. We used a Python library called Bleak for the bluetooth socket program.
 K-means was built using NumPy and the neural network using TensorFlow.
 
-[picture of the k-means output]
+After creating both algorithms they were recreated using C language by using the stored weights, biases and k-means centroids. This was done so that they could be used on the nRF without needing to transfer sensor data over bluetooth again. 
+
+
+
 ![K_Means_Centers](/pictures/k_means_centers.png "K_Means_Centers")
 
-[picture of the neural network decription]
+
+
 ![Neural_Network](/pictures/neural_network_pic.png "Neural_Network")
 
-[model picture of the neural network]
+
+
 ![Neural_Model](/pictures/neural_model.png "Neural_Model")
 
 
+
 ![Confusion_Matrix](/pictures/confusion_matrix.png "Confusion_Matrix")
+Here is a picture of a confusion matrix created based on live sensor data and a taught neural network. The same was created using K_Means.
+It shows predicted direction compared to user defined direction.
