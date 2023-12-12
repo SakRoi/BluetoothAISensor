@@ -27,19 +27,19 @@ After creating both algorithms they were recreated using C language by using the
 </div>
 
 
-<div style="text-align:center;">
-![Neural_Network](/pictures/neural_network_pic.png "Neural_Network")
-</div>
+<p align="center">
+ <img src="https://github.com/SakRoi/BluetoothAISensor/blob/readme/pictures/neural_network_pic.png?raw=true" alt="Neural_Network"/>
+</p>
 
 
-<div style="text-align:center;">
+
 ![Neural_Model](/pictures/neural_model.png "Neural_Model")
-</div>
 
 
-</div style="text-align:center;">
+
+
 ![Confusion_Matrix](/pictures/confusion_matrix.png "Confusion_Matrix")
-<div>
+
 
 Above is a picture of a confusion matrix created based on live sensor data and a taught neural network. 
 The matrix shows predicted direction compared to user defined direction.
