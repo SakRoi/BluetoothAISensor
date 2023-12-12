@@ -49,14 +49,14 @@ print(y_train)
 model = keras.Sequential(
     [
         keras.Input(shape=input_shape),
-        layers.Dense(128, activation = "relu"),
+        layers.Dense(10, activation = "relu"),
         layers.Dense(num_classes, activation="softmax"),
     ]
 )
 
 model.summary()
 
-batch_size = 128
+batch_size = 10
 epochs = 250
 
 model.compile(loss="categorical_crossentropy", optimizer="adam", metrics=["accuracy"])
