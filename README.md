@@ -22,19 +22,25 @@ K-means was built using NumPy and the neural network using TensorFlow.
 After creating both algorithms they were recreated using C language by using the stored weights, biases and k-means centroids. This was done so that they could be used on the nRF without needing to transfer sensor data over bluetooth again. 
 
 
-
+<div style="width:60px ; height:60px ; centre">
 ![K_Means_Centers](/pictures/k_means_centers.png "K_Means_Centers")
+<div>
 
 
-
+<div style="width:60px ; height:60px ; centre">
 ![Neural_Network](/pictures/neural_network_pic.png "Neural_Network")
+<div>
 
 
-
+<div style="width:60px ; height:60px ; centre">
 ![Neural_Model](/pictures/neural_model.png "Neural_Model")
+<div>
 
 
-
+<div style="width:60px ; height:60px ; centre">
 ![Confusion_Matrix](/pictures/confusion_matrix.png "Confusion_Matrix")
-Here is a picture of a confusion matrix created based on live sensor data and a taught neural network. The same was created using K_Means.
-It shows predicted direction compared to user defined direction.
+<div>
+
+Above is a picture of a confusion matrix created based on live sensor data and a taught neural network. 
+The matrix shows predicted direction compared to user defined direction.
+The same was done using K_Means but is not shown here.
