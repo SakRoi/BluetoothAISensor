@@ -18,8 +18,12 @@ Python was used for both the neural network and the k-means algorithm due to its
 K-means was built using NumPy and the neural network using TensorFlow.
 
 [picture of the k-means output]
+![K_Means_Centers](/pictures/k_means_centers.png "K_Means_Centers")
 
 [picture of the neural network decription]
 
 [model picture of the neural network]
-pictures/arkkitehtuuri.png
+
+
+
+![Confusion_Matrix](/pictures/confusion_matrix.png "Confusion_Matrix")
