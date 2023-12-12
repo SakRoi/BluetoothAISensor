@@ -27,17 +27,17 @@ After creating both algorithms they were recreated using C language by using the
 <div>
 
 
-<div style="width:60px ; height:60px ; centre">
+<div style="width:60px ; height:60px ; text-align:centre">
 ![Neural_Network](/pictures/neural_network_pic.png "Neural_Network")
 <div>
 
 
-<div style="width:60px ; height:60px ; centre">
+<div style="width:60px ; height:60px ; text-align:centre">
 ![Neural_Model](/pictures/neural_model.png "Neural_Model")
 <div>
 
 
-<div style="width:60px ; height:60px ; centre">
+<div style="width:60px ; height:60px ; text-align:centre">
 ![Confusion_Matrix](/pictures/confusion_matrix.png "Confusion_Matrix")
 <div>
 
