@@ -29,6 +29,8 @@ Visualization of the working k-means algorithm. <br> Red dots = data points. Gre
 K-means was built using NumPy. <br>
 In this K-means algorithm, 6 central points called centroids are created. These centroids are compared to the data points, and the closest are assigned to their clusters. After the iteration, the centroids are set to the central point of that cluster. This is repeated multiple times until the specified amount of iterations has been done. If the centroid's cluster is empty at the end of an iteration then it randomizes its location for the next iteration.
 
+The centroids are then written into a separate .h file as an array for use in the nRF5340.
+
 
 
 ### Neural Network
@@ -37,22 +39,24 @@ Visualization of the Neural Network<br>
  <img src="https://github.com/SakRoi/BluetoothAISensor/blob/readme/pictures/neural_network_pic.png?raw=true" alt="Neural_Network"/>
 </p>
 
-
-
 <p align="center">
 Summary of the Neural Network model<br>
  <img src="https://github.com/SakRoi/BluetoothAISensor/blob/readme/pictures/neural_model.png?raw=true" alt="Neural_Model"/>
 </p>
 
+The neural network was built using TensorFlow. The model has two layers, one hidden and one output. ReLU activation was used to remove any negative values from the hidden layer. SoftMax activation was used to restrict the output between 0 and 1 in the output layer.
 
+The above neural network was also built manually using numPy and the layer's weights and biasses are written into a separate .h file as arrays for use in the nRF5340.
 
+### Confusion matrix and ML on nRF5340
 
 <p align="center">
+A picture of a confusion matrix visualizing the taught neural network's direction predictions compared to the user-defined direction.<br>
  <img src="https://github.com/SakRoi/BluetoothAISensor/blob/readme/pictures/confusion_matrix.png?raw=true" alt="Confusion_Matrix"/>
 </p>
 
 
 
 Above is a picture of a confusion matrix created based on live sensor data and a taught neural network. 
-The matrix shows predicted direction compared to user defined direction.
+The matrix shows predicted direction compared to user-defined direction.
 The same was done using K_Means but is not shown here.
