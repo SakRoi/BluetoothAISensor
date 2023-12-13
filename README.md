@@ -1,3 +1,4 @@
+
 # BluetoothAISensor
 
   
@@ -15,27 +16,31 @@ The sensor data collected by nRF is stored in a MySQL database after it has been
 
 ![Architecture](/pictures/arkkitehtuuri.png "Project Architecture")
 
-
 Python was used for both the neural network and the k-means algorithm due to its ease of use. We used a Python library called Bleak for the bluetooth socket program.
-K-means was built using NumPy and the neural network using TensorFlow.
+and the neural network using TensorFlow.
 
 After creating both algorithms they were recreated using C language by using the stored weights, biases and k-means centroids. This was done so that they could be used on the nRF without needing to transfer sensor data over bluetooth again. 
 
-
+### K-means
 <p align="center">
+Visualization of the working k-means algorithm. <br> Red dots = data points. Grey dots = centroid starting positions. Green areas = resulting clusters <br>
  <img src="https://github.com/SakRoi/BluetoothAISensor/blob/readme/pictures/k_means_centers.png?raw=true" alt="K_Means_Centers"/>
 </p>
+K-means was built using NumPy. <br>
+In this K-means algorithm, 6 central points called centroids are created. These centroids are compared to the data points, and the closest are assigned to their clusters. After the iteration, the centroids are set to the central point of that cluster. This is repeated multiple times until the specified amount of iterations has been done. If the centroid's cluster is empty at the end of an iteration then it randomizes its location for the next iteration.
 
 
 
-
+### Neural Network
 <p align="center">
+Visualization of the Neural Network<br>
  <img src="https://github.com/SakRoi/BluetoothAISensor/blob/readme/pictures/neural_network_pic.png?raw=true" alt="Neural_Network"/>
 </p>
 
 
 
 <p align="center">
+Summary of the Neural Network model<br>
  <img src="https://github.com/SakRoi/BluetoothAISensor/blob/readme/pictures/neural_model.png?raw=true" alt="Neural_Model"/>
 </p>
 
