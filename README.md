@@ -6,23 +6,7 @@
 <p>A project for sending accelerometer data over a Bluetooth connection and making conclusions about that data using machine learning</p>
 
   
-```
-# Table of Contents
- 1. [Description](#Description)
-	 1. [Sensor data over Bluetooth LE](#Sensor data over Bluetooth LE)
-	 2. [Getting data from the MySQL database](#Getting data from the MySQL database)
-	 3. [K-means](#K-means)
-	 4. [Neural Network](#Neural Network)
-	 5. [Confusion matrix and ML on nRF5340](#Confusion matrix and ML on nRF5340)
-2. [Installation guide](#Installation guide)
-	1. [Requirements](#Requirements)
-4. [How-to use](#How-to use)
-5. [Credits](#Credits)
-6. [License](#License]
-
-```
 ## Description
-<a name="Description"></a>
 
 The project is a collection of code that moves accelerometer data over a Bluetooth connection and teaches both a k-means algorithm and a neural network to make predictions on that data. Centroids and weights gained from the teaching process can be used on an nRF5340 to make predictions on the device itself. 
 
@@ -42,7 +26,6 @@ The nRF5340 microcontroller supports Bluetooth LE. Using this feat, the accelero
 The Python script knows all the data is received from one measurement and to start a new one, when the nRF5340 sends a "666" value to it. If it has received the full measurement data, it is then sent to a MySQL database server using a TCP connection.
 
 ### Getting data from the MySQL database
-<a name="Getting data from the MySQL database"></a>
 
 Using an HTTP request to the MySQL server, the Python script gets the wanted sensor data from it and writes it as either a .csv or .txt file that then can be used as input for machine learning algorithms. 
 
@@ -60,7 +43,6 @@ In this K-means algorithm, 6 central points called centroids are created. These 
 The centroids are then written into a separate .h file as an array for use in the nRF5340.
 
 ### Neural Network
-<a name="Neural Network"></a>
 <p align="center">
 Visualization of the Neural Network<br>
  <img src="https://github.com/SakRoi/BluetoothAISensor/blob/readme/pictures/neural_network_pic.png?raw=true" alt="Neural_Network"/>
@@ -76,7 +58,6 @@ The neural network was built using TensorFlow. The model has two layers, one hid
 The above neural network was also built manually using numPy and the layer's weights and biasses are written into a separate .h file as arrays for use in the nRF5340.
 
 ### Confusion matrix and ML on nRF5340
-<a name=" Confusion matrix and ML on nRF5340"></a>
 <p align="center">
 A picture of a confusion matrix visualizing the taught neural network's direction predictions compared to the user-defined direction.<br>
  <img src="https://github.com/SakRoi/BluetoothAISensor/blob/readme/pictures/confusion_matrix.png?raw=true" alt="Confusion_Matrix"/>
@@ -89,18 +70,13 @@ When using K-means, the nRF5340 compares the measurement data to each of the cen
 When using a neural network, the nRF5340 puts the measurement data through forward propagation using a manually built model of the neural network. The weights and biases are also added to the calculation, resulting in a prediction. The made direction prediction is the index of the largest number in the output layer. This is charted on the confusion matrix.
 
 ## Installation guide
-<a name="Installation guide"></a>
 TO-DO
 ### Requirements
-<a name="Requirements"></a>
 TO-DO
 ## How to use
-<a name="How to use"></a>
 TO-DO
 ## Credit
-<a name="Credit"></a>
 This project was a group effort by Kasperi Sänkiniemi and Saku Roininen. Most of the code was written pair programming.
 
 ## License
-<a name="License"></a>
 This project uses an MIT license
