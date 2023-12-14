@@ -69,12 +69,6 @@ When using K-means, the nRF5340 compares the measurement data to each of the cen
 
 When using a neural network, the nRF5340 puts the measurement data through forward propagation using a manually built model of the neural network. The weights and biases are also added to the calculation, resulting in a prediction. The made direction prediction is the index of the largest number in the output layer. This is charted on the confusion matrix.
 
-## Installation guide
-TO-DO
-### Requirements
-TO-DO
-## How to use
-TO-DO
 ## Credit
 This project was a group effort by Kasperi Sänkiniemi and Saku Roininen. Most of the code was written pair programming.
 
