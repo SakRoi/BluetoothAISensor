@@ -12,7 +12,7 @@ The project is a collection of code that moves accelerometer data over a Bluetoo
 
 The sensor data collected by nRF is stored in a MySQL database after it has been moved to the Raspberry Pi. From there the data is fetched to a computer using a python script so that it can be used in the machine learning part of the project.
 
-![Architecture](/pictures/arkkitehtuuri.png "Project Architecture")
+![Architecture](/pictures/architecture.png "Project Architecture")
 
 ### Sensor data over Bluetooth LE
 <a name="Sensor data over Bluetooth LE"></a>
