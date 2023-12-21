@@ -3,6 +3,9 @@ from dotenv import load_dotenv
 import os
 
 def write_data(data: list) -> None:
+  '''Write the data into the MySQL database'''
+
+  #Load the parameters from a .env file
   load_dotenv()
   envHost = os.getenv("HOST")
   envUser = os.getenv("SQL_USER")
@@ -24,8 +27,8 @@ def write_data(data: list) -> None:
 
   mydb.commit()
 
-
   print(mycursor.rowcount, "was inserted.")
 
 if  "__main__":
+  '''Write test data to the MySQL database'''
   write_data([1000, 1000, 1000, 1000])
