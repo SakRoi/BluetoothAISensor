@@ -1,7 +1,7 @@
 import pandas as pd
 
 if '__main__':
-    '''Code to filter bad data from the .csv-file to ensure that K-means
+    '''Code to filter bad data from the .csv file to ensure that K-means
     and neural network learn correctly'''
 
     df = pd.read_csv('data.csv')
